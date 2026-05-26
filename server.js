@@ -15,9 +15,11 @@ app.get("/fetch", async (req, res) => {
 
   try {
 
-    browser = await chromium.launch({
-      headless: true
-    });
+  browser = await chromium.launch({
+  headless: true,
+  executablePath: "/opt/render/.cache/ms-playwright/chromium-1223/chrome-linux/chrome",
+  args: ["--no-sandbox", "--disable-setuid-sandbox"]
+});
 
     const page = await browser.newPage({
       userAgent:
